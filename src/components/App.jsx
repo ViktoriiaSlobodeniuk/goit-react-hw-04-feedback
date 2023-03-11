@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { GlobalStyle } from './GlobalStyle';
+import { Layout } from './Layout.styled';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/Statistics';
 import Section from './Section/Section';
-import { GlobalStyle } from './GlobalStyle';
-import { Layout } from './Layout.styled';
 
 function App() {
   const [good, setGood] = useState(0);
@@ -11,14 +11,18 @@ function App() {
   const [bad, setBad] = useState(0);
 
   const addFeedback = option => {
-    if (option === 'good') {
-      setGood(prevState => prevState + 1);
-    }
-    if (option === 'neutral') {
-      setNeutral(prevState => prevState + 1);
-    }
-    if (option === 'bad') {
-      setBad(prevState => prevState + 1);
+    switch (option) {
+      case 'good':
+        setGood(prevState => prevState + 1);
+        break;
+      case 'neutral':
+        setNeutral(prevState => prevState + 1);
+        break;
+      case 'bad':
+        setBad(prevState => prevState + 1);
+        break;
+      default:
+        break;
     }
   };
 
